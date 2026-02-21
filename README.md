@@ -33,6 +33,10 @@ Defaults: 59:59, 4.1666666667 mi, 3 seconds.
 
 ## Install
 
+Early mobile preview install:
+
+- From your phone, open this Connect IQ app listing to install early preview builds: https://apps.garmin.com/apps/c0891461-7d02-498f-9697-ae50f2819938
+
 1. Open the project in the Connect IQ SDK.
 2. Build and install the data field to your watch.
 3. Add the data field to an activity screen.
