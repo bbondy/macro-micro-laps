@@ -1,0 +1,12 @@
+# Env files
+.envrc
+.envrc.*
+
+# macOS
+.DS_Store
+
+# Editor/IDE
+.vscode/
+
+# Build artifacts
+bin/

@@ -1,0 +1,25 @@
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="1">
+  <iq:application
+    id="a9f3a60b-5b01-4c99-9d7e-5bdf4f1dbb1b"
+    type="datafield"
+    name="@Strings.AppName"
+    entry="MacroLapApp"
+    launcherIcon="@Drawables.LauncherIcon"
+    minSdkVersion="3.0.0">
+    <iq:products>
+      <iq:product id="enduro"/>
+      <iq:product id="enduro3"/>
+      <iq:product id="fenix6"/>
+      <iq:product id="fenix6s"/>
+      <iq:product id="fenix6xpro"/>
+      <iq:product id="fenix7"/>
+      <iq:product id="fenix7s"/>
+      <iq:product id="fenix7x"/>
+      <iq:product id="epix2"/>
+      <iq:product id="fr945"/>
+      <iq:product id="fr955"/>
+      <iq:product id="fr965"/>
+      <iq:product id="venu2"/>
+    </iq:products>
+  </iq:application>
+</iq:manifest>

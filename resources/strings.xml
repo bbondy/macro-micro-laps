@@ -1,0 +1,11 @@
+<resources>
+  <string id="AppName">MacroLap</string>
+  <string id="EnableCustomTargets">Enable Custom Targets</string>
+  <string id="TargetTimeMinutes">Target Time Minutes</string>
+  <string id="TargetTimeSeconds">Target Time Seconds</string>
+  <string id="TargetDistanceValue">Target Distance (x1000)</string>
+  <string id="TargetDistanceUnit">Target Distance Unit</string>
+  <string id="UnitMiles">Miles</string>
+  <string id="UnitKilometers">Kilometers</string>
+  <string id="DoubleTapThresholdSeconds">Double Tap Threshold (sec)</string>
+</resources>
