@@ -10,3 +10,8 @@
 
 # Build artifacts
 bin/
+
+
+# temp files
+*.swo
+*.swp

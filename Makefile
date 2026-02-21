@@ -5,8 +5,9 @@ MONKEYDO ?= $(SDK_ROOT)/bin/monkeydo
 UNAME_S := $(shell uname -s)
 JUNGLE ?= $(CURDIR)/monkey.jungle
 OUT_DIR ?= $(CURDIR)/bin
-OUT_PRG ?= $(OUT_DIR)/macromicrolaps.prg
-DEVICE ?= enduro_sim
+OUT_PRG ?= $(OUT_DIR)/micromacrolap.prg
+OUT_IQ ?= $(OUT_DIR)/MicroMacroLap.iq
+DEVICE ?= enduro3
 DEV_KEY ?=
 KEY_DIR ?= $(HOME)/Library/Application Support/Garmin/ConnectIQ/keys
 KEY_DER ?= $(KEY_DIR)/developer_key.der
@@ -16,7 +17,7 @@ ifneq ($(strip $(DEV_KEY)),)
 KEY_FLAG := -y "$(DEV_KEY)"
 endif
 
-.PHONY: all build clean key sim sim-run sim-console package install
+.PHONY: all build clean key sim sim-run sim-console package package-local install device-list
 
 all: build
 
@@ -48,10 +49,41 @@ sim-console:
 	"$(SDK_ROOT)/bin/ConnectIQ.app/Contents/MacOS/simulator"
 
 package: build
-	"$(MONKEYC)" -f "$(JUNGLE)" -d "$(DEVICE)" -y "$(DEV_KEY)" -e -o "$(OUT_DIR)/MacroLap.iq"
+	@rm -f "$(OUT_IQ)"
+	"$(MONKEYC)" -f "$(JUNGLE)" -d "$(DEVICE)" -y "$(DEV_KEY)" -e -o "$(OUT_IQ)"
+	@if [ ! -s "$(OUT_IQ)" ]; then \
+		echo "ERROR: package output missing at $(OUT_IQ)"; \
+		exit 1; \
+	fi
+	@if command -v rg >/dev/null 2>&1; then \
+		bsdtar -tf "$(OUT_IQ)" | rg -q '^manifest\.xml$$'; \
+	else \
+		bsdtar -tf "$(OUT_IQ)" | grep -q '^manifest\.xml$$'; \
+	fi; \
+	if [ $$? -ne 0 ]; then \
+		echo "ERROR: $(OUT_IQ) is not a valid export package (missing manifest.xml)."; \
+		exit 1; \
+	fi
+
+package-local: build
+	@rm -f "$(OUT_IQ)"
+	"$(MONKEYC)" -f "$(JUNGLE)" -d "$(DEVICE)" -y "$(DEV_KEY)" -o "$(OUT_IQ)"
+	@if [ ! -s "$(OUT_IQ)" ]; then \
+		echo "ERROR: package output missing at $(OUT_IQ)"; \
+		exit 1; \
+	fi
 
 install: package
-	@echo "Install $(OUT_DIR)/MacroLap.iq via Garmin Express or the Connect IQ mobile app (developer mode)."
+	@echo "Install $(OUT_IQ) via Garmin Express or the Connect IQ mobile app (developer mode)."
+
+device-list:
+	@DEVICE_REF_DIR="$(SDK_ROOT)/resources/device-reference"; \
+	if [ ! -d "$$DEVICE_REF_DIR" ]; then \
+		echo "ERROR: Could not find device metadata at $$DEVICE_REF_DIR"; \
+		echo "Check SDK_ROOT or $(SDK_CFG)."; \
+		exit 1; \
+	fi; \
+	find "$$DEVICE_REF_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort
 
 key:
 	@mkdir -p "$(KEY_DIR)"

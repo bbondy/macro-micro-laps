@@ -343,6 +343,6 @@ class MacroLapField extends WatchUi.DataField {
     }
 
     function log(message) {
-        System.println("MacroLap: " + message);
+        System.println("MicroMacroLap: " + message);
     }
 }

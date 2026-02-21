@@ -1,7 +1,7 @@
 using Toybox.Application;
 using Toybox.WatchUi;
 
-class MacroLapApp extends Application.AppBase {
+class MicroMacroLapApp extends Application.AppBase {
     function initialize() {
         AppBase.initialize();
     }
@@ -18,5 +18,5 @@ class MacroLapApp extends Application.AppBase {
 }
 
 function getApp() {
-    return Application.getApp() as MacroLapApp;
+    return Application.getApp() as MicroMacroLapApp;
 }

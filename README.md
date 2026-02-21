@@ -1,10 +1,10 @@
-# MacroLap (BYU) Connect IQ Data Field
+# MicroMacroLap (BYU) Connect IQ Data Field
 
-MacroLap is a Connect IQ data field that adds virtual "macro laps" for Backyard Ultra while keeping Garmin micro laps untouched.
+MicroMacroLap is a Connect IQ data field that adds virtual "macro laps" for Backyard Ultra while keeping Garmin micro laps untouched.
 
 ## Behavior
 
-- Macro starts automatically at activity start (MacroLap 1).
+- Macro starts automatically at activity start (MicroMacroLap 1).
 - Double-lap press (two lap events within the threshold) starts the next macro at the second press.
 - Single lap presses remain normal Garmin laps and are recorded as usual.
 
@@ -74,6 +74,14 @@ Build a signed `.iq` package:
 
 ```sh
 make package DEVICE=enduro DEV_KEY="$HOME/Library/Application Support/Garmin/ConnectIQ/keys/developer_key.der"
+```
+
+`make package` creates an export package for dashboard upload and validates that it is a real `.iq` bundle.
+
+If you only want a local signed artifact (not for dashboard upload), use:
+
+```sh
+make package-local
 ```
 
 Install the `.iq` using Garmin Express or the Connect IQ mobile app (developer mode):
