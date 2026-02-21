@@ -1,12 +1,12 @@
-<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="1">
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
   <iq:application
     id="D119234E-1DF0-4177-B4B8-C6DB656DFB78"
     type="datafield"
     name="@Strings.AppName"
-    entry="MicroMacroLapApp"
+    entry="MacroLapApp"
     launcherIcon="@Drawables.LauncherIcon"
-    minSdkVersion="3.0.0"
-    version="1.0.5">
+    minApiLevel="3.0.0"
+    version="1.0.6">
     <iq:products>
       <iq:product id="enduro"/>
       <iq:product id="enduro3"/>

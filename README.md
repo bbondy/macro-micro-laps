@@ -1,10 +1,10 @@
-# MicroMacroLap (BYU) Connect IQ Data Field
+# Macro Lap (BYU) Connect IQ Data Field
 
-MicroMacroLap is a Connect IQ data field that adds virtual "macro laps" for Backyard Ultra while keeping Garmin micro laps untouched.
+Macro Lap is a Connect IQ data field that adds virtual "macro laps" for Backyard Ultra while keeping Garmin micro laps untouched.
 
 ## Behavior
 
-- Macro starts automatically at activity start (MicroMacroLap 1).
+- Macro starts automatically at activity start (Macro Lap 1).
 - Double-lap press (two lap events within the threshold) starts the next macro at the second press.
 - Single lap presses remain normal Garmin laps and are recorded as usual.
 
