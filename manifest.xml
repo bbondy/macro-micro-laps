@@ -6,7 +6,7 @@
     entry="MacroLapApp"
     launcherIcon="@Drawables.LauncherIcon"
     minApiLevel="3.0.0"
-    version="1.0.6">
+    version="1.0.7">
     <iq:products>
       <iq:product id="enduro"/>
       <iq:product id="enduro3"/>
