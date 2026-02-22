@@ -133,8 +133,10 @@ class MacroLapField extends WatchUi.DataField {
         log("initMacro");
         macroInitialized = true;
         macroIndex = 1;
-        macroStartTimerMs = info.timerTime != null ? info.timerTime : 0;
-        macroStartDistanceM = info.elapsedDistance != null ? info.elapsedDistance : 0.0;
+        // Macro lap 1 should always represent activity start, even if the
+        // data field is first shown later in the workout.
+        macroStartTimerMs = 0;
+        macroStartDistanceM = 0.0;
     }
 
     function loadSettings() {
